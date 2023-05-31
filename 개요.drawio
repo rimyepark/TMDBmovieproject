@@ -1,0 +1,85 @@
+<mxfile host="Electron" modified="2023-05-31T07:00:45.055Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="HaP9A8Zxe365vHdChA3R" version="21.2.8" type="device">
+  <diagram name="페이지-1" id="gCI7IiwotbNxQ4fzfgsU">
+    <mxGraphModel dx="1098" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="HsNuz79VL3qz-SUxd8HQ-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="60" y="150" width="510" height="660" as="geometry" />
+        </mxCell>
+        <mxCell id="HsNuz79VL3qz-SUxd8HQ-3" value="카드&lt;br&gt;형식" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="120" y="360" width="100" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="HsNuz79VL3qz-SUxd8HQ-4" value="영화 이미지" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="265" y="360" width="100" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="HsNuz79VL3qz-SUxd8HQ-5" value="영화는&lt;br&gt;순위&lt;br&gt;오름차순" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="400" y="360" width="100" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="HsNuz79VL3qz-SUxd8HQ-9" value="" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="120" y="570" width="100" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="HsNuz79VL3qz-SUxd8HQ-10" value="박스 선도&lt;br&gt;분홍색?" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="265" y="570" width="100" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="HsNuz79VL3qz-SUxd8HQ-11" value="박스 안은&lt;br&gt;하얀색" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="400" y="570" width="100" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="HsNuz79VL3qz-SUxd8HQ-13" value="분홍색" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="60" y="150" width="510" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="HsNuz79VL3qz-SUxd8HQ-16" value="검색창" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="440" y="160" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="HsNuz79VL3qz-SUxd8HQ-24" value="" style="shape=link;html=1;rounded=0;width=-2;" parent="1" edge="1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="265" y="470" as="sourcePoint" />
+            <mxPoint x="365" y="470" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="325" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HsNuz79VL3qz-SUxd8HQ-25" value="그 외 구현 하고 싶은 기능&lt;br style=&quot;font-size: 15px;&quot;&gt;1. 음성 검색기능&lt;br style=&quot;font-size: 15px;&quot;&gt;2. 대소문자 검색기능&lt;br style=&quot;font-size: 15px;&quot;&gt;3. 순위대로 영화 정렬" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=15;" parent="1" vertex="1">
+          <mxGeometry x="605" y="215" width="190" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="awmQQPVRGV8q2G9Gs9pZ-1" value="필수로 넣어야할&amp;nbsp; 요소&lt;br&gt;&lt;br style=&quot;font-size: 17px;&quot;&gt;* const or let 으로 변수 선언&lt;br style=&quot;font-size: 17px;&quot;&gt;* 화살표 함수&lt;br style=&quot;font-size: 17px;&quot;&gt;* 배열 메소드 두개 사용&lt;br style=&quot;font-size: 17px;&quot;&gt;* DOM 제어하기&lt;br style=&quot;font-size: 17px;&quot;&gt;-이벤트 처리&amp;nbsp;&lt;br style=&quot;font-size: 17px;&quot;&gt;-경고 메세지 출력" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;spacing=11;fontSize=17;" parent="1" vertex="1">
+          <mxGeometry x="45" y="880" width="250" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="awmQQPVRGV8q2G9Gs9pZ-4" value="영화설명" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="285" y="480" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="2_Y8n-Xq_TotzsELdkF7-1" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.825;entryY=0.95;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="HsNuz79VL3qz-SUxd8HQ-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="110" as="sourcePoint" />
+            <mxPoint x="650" y="60" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2_Y8n-Xq_TotzsELdkF7-3" value="검색창에 마우스 커서를 가져다 대면&lt;br&gt;색깔이 바뀌게 하고 싶어" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="550" y="73" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="2_Y8n-Xq_TotzsELdkF7-4" value="평점" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="500" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="2_Y8n-Xq_TotzsELdkF7-5" value="" style="shape=link;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="265" y="410" as="sourcePoint" />
+            <mxPoint x="365" y="410" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="310" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2_Y8n-Xq_TotzsELdkF7-7" value="영화제목" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="280" y="370" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="2_Y8n-Xq_TotzsELdkF7-8" value="카드에&lt;br&gt;그림자를 넣기&lt;br&gt;보기&lt;br&gt;깔끔한&lt;br&gt;ui구현하기&lt;br&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="650" y="640" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="2_Y8n-Xq_TotzsELdkF7-9" value="베이지색" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="285" y="250" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
