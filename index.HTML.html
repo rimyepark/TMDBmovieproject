@@ -62,7 +62,6 @@
             justify-content: center;
             display: grid;
         }
-
     </style>
 </head>
 
@@ -96,6 +95,7 @@
         // 적용이 안된다는 에러 메시지가 떠서 몇번을 지우고 깔다가 마지막에는 윈도우에서 HTML로
         //직접 적용하는 방법까지 썼다(권장하는 방법이 아님) 근데도 오류가 나서 결국 포기했다.
 
+        //선언문은 const를 주로 사용하였다.
 
         const options = {
             method: 'GET',
@@ -105,12 +105,14 @@
             }
         };
 
+        //DOM을 이용해서 ID속성 기준으로 요소를 선택함
+
         const searchInput = document.getElementById('search-input');
         const movieList = document.getElementById('movie-list');
 
 
 
-    //이곳에서 영화 카드를 만들었다. 사실 영화카드라고 하기 보다는 출력해온 정보를 겹겹히 쌓았다.
+        //DOM을 이용해서 새로운 HTML요소를 생성함
         function createMovieCard(movie) {
             const card = document.createElement('div');
             card.className = 'movie-card';
@@ -127,7 +129,7 @@
 
             const voteAverage = document.createElement('p');
             voteAverage.textContent = 'Vote Average: ' + movie.vote_average;
-            //각 요소를 card 요소의 자식 요소로 추가.
+            //해당 요소의 하위 요소로 child를 추가.
             card.appendChild(title);
             card.appendChild(overview);
             card.appendChild(poster);
@@ -143,31 +145,38 @@
         }
 
         //빈 HTML을 지정해서 계속 돌아가게 만들었다.
+        //forEach문 사용, 화살표 함수 사용
 
-        function renderMovies(movies) {
+        const renderMovies = (movies) => {
             movieList.innerHTML = '';
 
-            movies.forEach(function (movie) {
+            movies.forEach((movie) => {
                 const card = createMovieCard(movie);
                 movieList.appendChild(card);
             });
-        }
+        };
 
         //검색기능을 구현했다. 대소문자로도 가능하게끔 구현했다.
+        //filter 메소드를 넣어서 입력한 문자열이 포함된 영화들만 필터링하여 출력하게 만들었다.
+        //한국어로도 검색이 가능하게 만들었다
+        //새로고침이나 검색해서 아나오면 오류창을 눌러야하는데 버튼을 만드는 것을 까먹었다. 
+        //중간에 버튼을 만들면 수정해야하는 코드들이 있어서 대신 다른 것들로 대체.
+        fetch('https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=1', options)
+      .then(response => response.json())
+      .then(data => renderMovies(data.results))
+      .catch(err => console.error(err));
 
-        fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
-            .then(response => response.json())
-            .then(data => renderMovies(data.results))
-            .catch(err => console.error(err));
+    searchInput.addEventListener('input', () => {
+      const searchValue = searchInput.value.toLowerCase();
 
-        searchInput.addEventListener('input', function () {
-            const searchValue = searchInput.value.toLowerCase();
-
-            fetch('https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query=' + searchValue, options)
-                .then(response => response.json())
-                .then(data => renderMovies(data.results))
-                .catch(err => console.error(err));
-        });
+      fetch('https://api.themoviedb.org/3/search/movie?include_adult=false&language=ko-KR&page=1&query=' + searchValue, options)
+        .then(response => response.json())
+        .then(data => {
+          const filteredMovies = data.results.filter(movie => movie.title.toLowerCase().includes(searchValue));
+          renderMovies(filteredMovies);
+        })
+        .catch(err => console.error(err));
+    });
     </script>
 </body>
 
