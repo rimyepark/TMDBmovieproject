@@ -159,24 +159,24 @@
         //검색기능을 구현했다. 대소문자로도 가능하게끔 구현했다.
         //filter 메소드를 넣어서 입력한 문자열이 포함된 영화들만 필터링하여 출력하게 만들었다.
         //한국어로도 검색이 가능하게 만들었다
-        //새로고침이나 검색해서 아나오면 오류창을 눌러야하는데 버튼을 만드는 것을 까먹었다. 
+        //새로고침이나 검색해서 아무것도 나오지 않으면 아니요 오류창을 띄우고 싶은데 버튼을 만드는 것을 까먹었다. 
         //중간에 버튼을 만들면 수정해야하는 코드들이 있어서 대신 다른 것들로 대체.
         fetch('https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=1', options)
-      .then(response => response.json())
-      .then(data => renderMovies(data.results))
-      .catch(err => console.error(err));
+            .then(response => response.json())
+            .then(data => renderMovies(data.results))
+            .catch(err => console.error(err));
 
-    searchInput.addEventListener('input', () => {
-      const searchValue = searchInput.value.toLowerCase();
+        searchInput.addEventListener('input', () => {
+            const searchValue = searchInput.value.toLowerCase();
 
-      fetch('https://api.themoviedb.org/3/search/movie?include_adult=false&language=ko-KR&page=1&query=' + searchValue, options)
-        .then(response => response.json())
-        .then(data => {
-          const filteredMovies = data.results.filter(movie => movie.title.toLowerCase().includes(searchValue));
-          renderMovies(filteredMovies);
-        })
-        .catch(err => console.error(err));
-    });
+            fetch('https://api.themoviedb.org/3/search/movie?include_adult=false&language=ko-KR&page=1&query=' + searchValue, options)
+                .then(response => response.json())
+                .then(data => {
+                    const filteredMovies = data.results.filter(movie => movie.title.toLowerCase().includes(searchValue));
+                    renderMovies(filteredMovies);
+                })
+                .catch(err => console.error(err));
+        });
     </script>
 </body>
 
