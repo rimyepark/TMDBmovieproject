@@ -170,21 +170,38 @@
         // 일치하는 영화만을 담은 배열을 만들고, displayMovies 함수를 호출하여 결과를 웹 페이지에 표시.
         //근데 사실 이부분은 정말 몰라서 그냥 영어권 유투브를 보면서 따라했다. 외국어로 된 40분짜리 영상을
         //4시간동안 해석하고 들으면서 했다. 사실 정확한 뜻은 잘 모르겠다. 
+
+        //이거 검색기능이 구현이 되지 않는다는 것을 너무 늦게 알았다. 새파일로 다시 만들었다...
+        
         function filterMovies(searchTerm) {
-            const filteredMovies = popularMovies.filter(movie => {
-                const title = movie.title.toLowerCase();
-                return title.includes(searchTerm.toLowerCase());
-            });
+      const filteredMovies = popularMovies.filter(movie => {
+        const title = movie.title.toLowerCase();
+        return title.includes(searchTerm.toLowerCase());
+      });
+      
+      displayMovies(filteredMovies);
+    }
+    fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
+      .then(response => response.json())
+      .then(data => renderMovies(data.results))
+      .catch(err => console.error(err));
 
-            displayMovies(filteredMovies);
-        }
+    searchInput.addEventListener('input', function() {
+      const searchValue = searchInput.value.toLowerCase();
 
-        searchInput.addEventListener('input', () => {
-            const searchTerm = searchInput.value.trim();
-            filterMovies(searchTerm);
-        });
+      fetch('https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query=' + searchValue, options)
+        .then(response => response.json())
+        .then(data => renderMovies(data.results))
+        .catch(err => console.error(err));
+    });
 
-        fetchPopularMovies();
+
+    searchInput.addEventListener('input', () => {
+      const searchTerm = searchInput.value.trim();
+      filterMovies(searchTerm);
+    });
+    
+    fetchPopularMovies();
     </script>
 </body>
 

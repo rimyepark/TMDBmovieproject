@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Movie Search</title>
+    <style>
+        header {
+            height: 50px;
+            padding: 1rem;
+            display: flex;
+            justify-content: flex-end;
+            background-color: palevioletred;
+
+        }
+
+        .movie-card {
+            width: 300px;
+            background-color: white;
+            display: inline-block;
+            width: 300px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid palevioletred;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0.2px 4px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .movie-card img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        input {
+            height: 20px;
+            background-color: transparent;
+            border: 2px solid white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            outline: 0;
+            background-color: pink;
+        }
+
+        input::placeholder {
+            color: white;
+
+        }
+
+        main {
+            background-color: antiquewhite;
+        }
+
+        h1 {
+
+            color: beige;
+            justify-content: center;
+            display: grid;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Movie Search</h1>
+        <input type="text" id="search-input" placeholder="Search movies...">
+    </header>
+    <main>
+        <div id="movie-list"></div>
+    </main>
+
+    <script>
+
+        // const options 객체는 API 요청에 필요한 설정을 정의한다. 
+        // 여기서는 GET 메서드를 사용하고, 헤더에는 JSON 응답을 요청하며, 인증에 사용할 Bearer 토큰을사용했다.
+        // API Key를 사용하고 싶었는데 키를 사용하면 계속 오류가 나서 결국 토큰을 사용했다.
+
+
+
+        //         const apiKey = process.env.MY_API_TOKEN;
+        // const options = {
+        //   method: 'GET',
+        //   headers: {
+        //     accept: 'application/json',
+        //     Authorization: `Bearer ${apiKey}`
+        //   }
+        // };
+
+        // 제일 마지막으로는 윈도우 환경 변수까지 사용하려고 했다. dotenv 파일이 버전이 달라서
+        // 적용이 안된다는 에러 메시지가 떠서 몇번을 지우고 깔다가 마지막에는 윈도우에서 HTML로
+        //직접 적용하는 방법까지 썼다(권장하는 방법이 아님) 근데도 오류가 나서 결국 포기했다.
+
+
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYzMwNDU5MGVjY2EwMmM4ZGVlMWIyMjJkNzMzYjViZiIsInN1YiI6IjY0NzQ2NzJhZGQ3MzFiMmQ3NjJiZjc5NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.irekIixQ9Yx-b9lIPtMCcWuI4JrQ-23AOJBFMtnY_PA'
+            }
+        };
+
+        const searchInput = document.getElementById('search-input');
+        const movieList = document.getElementById('movie-list');
+
+
+
+    //이곳에서 영화 카드를 만들었다. 사실 영화카드라고 하기 보다는 출력해온 정보를 겹겹히 쌓았다.
+        function createMovieCard(movie) {
+            const card = document.createElement('div');
+            card.className = 'movie-card';
+
+            const title = document.createElement('h2');
+            title.textContent = movie.title;
+
+            const overview = document.createElement('p');
+            overview.textContent = movie.overview;
+
+            const poster = document.createElement('img');
+            poster.src = 'https://image.tmdb.org/t/p/w300' + movie.poster_path;
+            poster.alt = movie.title;
+
+            const voteAverage = document.createElement('p');
+            voteAverage.textContent = 'Vote Average: ' + movie.vote_average;
+            //각 요소를 card 요소의 자식 요소로 추가.
+            card.appendChild(title);
+            card.appendChild(overview);
+            card.appendChild(poster);
+            card.appendChild(voteAverage);
+
+            //클릭할때 경고창이 뜨게 만들었다.
+
+            card.addEventListener('click', function () {
+                alert('Movie ID: ' + movie.id);
+            });
+
+            return card;
+        }
+
+        //빈 HTML을 지정해서 계속 돌아가게 만들었다.
+
+        function renderMovies(movies) {
+            movieList.innerHTML = '';
+
+            movies.forEach(function (movie) {
+                const card = createMovieCard(movie);
+                movieList.appendChild(card);
+            });
+        }
+
+        //검색기능을 구현했다. 대소문자로도 가능하게끔 구현했다.
+
+        fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
+            .then(response => response.json())
+            .then(data => renderMovies(data.results))
+            .catch(err => console.error(err));
+
+        searchInput.addEventListener('input', function () {
+            const searchValue = searchInput.value.toLowerCase();
+
+            fetch('https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query=' + searchValue, options)
+                .then(response => response.json())
+                .then(data => renderMovies(data.results))
+                .catch(err => console.error(err));
+        });
+    </script>
+</body>
+
+</html>
